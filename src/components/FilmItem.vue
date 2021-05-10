@@ -19,8 +19,8 @@
 		<h5 v-else>{{ details.original_language }}</h5>
 		<!-- vote -->
 		<div class="stars">
-			<i class="fas fa-star" v-for="(star, index) in vote_average" :key="index"></i>
-			<i class="far fa-star" v-for="(star, index) in empty_stars" :key="index"></i>
+			<i class="fas fa-star" v-for="(star, index) in vote_average" :key="'a' + index"></i>
+			<i class="far fa-star" v-for="(star, index) in empty_stars" :key="'b' + index"></i>
 		</div>
 	</div>
 </template>
