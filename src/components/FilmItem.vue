@@ -1,8 +1,16 @@
 <template>
 	<div class="film-details">
+		<!-- title -->
 		<h2 class="title">{{ details.title }}</h2>
+		<!-- original title -->
 		<h4 class="original-title">{{ details.original_title }}</h4>
-		<h4 class="lang">{{ details.original_language }}</h4>
+		<!-- if lang == it or en > show flags -->
+		<div v-if="languages.includes(details.original_language)">
+			<img :src="require(`@/images/${details.original_language}.png`)" :alt="details.title" />
+		</div>
+		<!-- else show text lang -->
+		<h5 v-else>{{ details.original_language }}</h5>
+		<!-- vote -->
 		<h5 class="vote">{{ details.vote_average }}</h5>
 	</div>
 </template>
@@ -11,7 +19,19 @@
 	export default {
 		name: 'FilmItem',
 		props: ['details'],
+		data() {
+			return {
+				languages: ['en', 'it'],
+			};
+		},
+		methods: {
+			getLangFlag() {},
+		},
 	};
 </script>
 
-<style></style>
+<style scoped lang="scss">
+	img {
+		width: 30px;
+	}
+</style>
