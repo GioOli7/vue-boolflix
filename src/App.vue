@@ -5,8 +5,8 @@
 
 		<!-- MAIN -->
 		<main>
-			<FilmList :filmList="filmsResult" />
-			<TvSeriesList :seriesList="tvSeriesResult" />
+			<FilmList :filmList="filmsResult" :searchTrigger="searchTrigger" />
+			<TvSeriesList :seriesList="tvSeriesResult" :searchTrigger="searchTrigger" />
 		</main>
 	</div>
 </template>
@@ -29,6 +29,7 @@
 				apikey: '2b4a7028c4a25940b0c093d536ca98c6',
 				filmsResult: [],
 				tvSeriesResult: [],
+				searchTrigger: false,
 			};
 		},
 		methods: {
@@ -46,7 +47,6 @@
 					)
 					.then(result => {
 						this.filmsResult = result.data.results;
-						// console.log(this.filmsResult);
 					})
 					.catch(error => {
 						console.log('error', error);
@@ -64,6 +64,8 @@
 					.catch(error => {
 						console.log('error', error);
 					});
+				// se non ci sono risultati ma non ho ancora fatto una ricerca, non lascio nessun feedback
+				this.searchTrigger = true;
 			},
 		},
 	};

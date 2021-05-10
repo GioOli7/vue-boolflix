@@ -4,6 +4,7 @@
 		<div class="film-item" v-for="(film, index) in filmList" :key="index">
 			<FilmItem :details="filmList[index]" />
 		</div>
+		<span v-show="filmList.length == 0 && searchTrigger == true">Non ci sono risultati</span>
 	</section>
 </template>
 
@@ -11,7 +12,7 @@
 	import FilmItem from '@/components/FilmItem';
 	export default {
 		name: 'FilmList',
-		props: ['filmList'],
+		props: ['filmList', 'searchTrigger'],
 		components: {
 			FilmItem,
 		},
