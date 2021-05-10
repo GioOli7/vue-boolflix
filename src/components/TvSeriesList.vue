@@ -3,7 +3,7 @@
 		<h2>Serie TV</h2>
 		<div class="tvseries-list">
 			<div class="film-item" v-for="(film, index) in seriesList" :key="index">
-				<FilmItem :details="seriesList[index]" />
+				<FilmItem :details="film" />
 			</div>
 		</div>
 		<span v-show="seriesList.length == 0 && searchTrigger == true">Non ci sono risultati</span>
@@ -24,10 +24,12 @@
 <style scoped>
 	.tvseries-list {
 		display: flex;
+		overflow-y: hidden;
+		scrollbar-width: thin;
 	}
 
 	.film-item {
-		width: calc(100% / 6);
+		min-width: calc(100% / 6);
 		height: 410px;
 	}
 </style>
