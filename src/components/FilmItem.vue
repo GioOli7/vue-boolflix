@@ -1,9 +1,11 @@
 <template>
 	<div class="film-details">
 		<!-- title -->
-		<h2 class="title">{{ details.title }}</h2>
+		<h3 class="title">{{ details.title ? details.title : details.name }}</h3>
 		<!-- original title -->
-		<h4 class="original-title">{{ details.original_title }}</h4>
+		<h4 class="original-title">
+			{{ details.original_title ? details.original_title : details.original_name }}
+		</h4>
 		<!-- if lang == it or en > show flags -->
 		<div v-if="languages.includes(details.original_language)">
 			<img :src="require(`@/images/${details.original_language}.png`)" :alt="details.title" />
@@ -24,9 +26,7 @@
 				languages: ['en', 'it'],
 			};
 		},
-		methods: {
-			getLangFlag() {},
-		},
+		methods: {},
 	};
 </script>
 
