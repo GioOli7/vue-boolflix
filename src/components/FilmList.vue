@@ -25,4 +25,9 @@
 	.film-list {
 		display: flex;
 	}
+
+	.film-item {
+		width: calc(100% / 6);
+		height: 410px;
+	}
 </style>

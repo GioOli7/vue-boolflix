@@ -1,5 +1,10 @@
 <template>
-	<div class="film-details">
+	<div
+		class="film-details"
+		:style="{
+			backgroundImage: `url(https://image.tmdb.org/t/p/w342${details.poster_path})`,
+		}"
+	>
 		<!-- title -->
 		<h3 class="title">{{ details.title ? details.title : details.name }}</h3>
 		<!-- original title -->
@@ -13,7 +18,6 @@
 		<!-- else show text lang -->
 		<h5 v-else>{{ details.original_language }}</h5>
 		<!-- vote -->
-		<!-- <h5 class="vote">{{ vote_average }}</h5> -->
 		<div class="stars">
 			<i class="fas fa-star" v-for="(star, index) in vote_average" :key="index"></i>
 			<i class="far fa-star" v-for="(star, index) in empty_stars" :key="index"></i>
@@ -47,6 +51,12 @@
 <style scoped lang="scss">
 	img {
 		width: 30px;
+	}
+
+	.film-details {
+		background-size: cover;
+		width: 100%;
+		height: 100%;
 	}
 
 	.stars {
