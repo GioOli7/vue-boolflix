@@ -26,8 +26,19 @@
 
 <style scoped lang="scss">
 	.info {
-		width: 40%;
+		z-index: 1;
+		position: relative;
+		overflow-y: auto;
+		width: 50%;
 		padding-left: 40px;
+		padding-right: 20px;
+		max-height: 490px;
+		scrollbar-width: none; //hide scrollbar in firefox
+		-ms-overflow-style: none; /* IE and Edge */
+		&::-webkit-scrollbar {
+			//hide scrollbar in chrome, safari, opera
+			display: none;
+		}
 		.movie-title {
 			color: white;
 			font-size: 60px;

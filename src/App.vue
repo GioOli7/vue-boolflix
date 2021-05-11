@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<!-- HEADER -->
-		<SearchMovie @getFilm="getFilm" />
+		<Header @getFilm="getFilm" />
 
 		<!-- MAIN -->
 		<main>
@@ -18,16 +18,16 @@
 
 <script>
 	import axios from 'axios';
+	import Header from '@/components/Header';
 	import Hero from '@/components/Hero';
-	import SearchMovie from '@/components/SearchMovie';
 	import FilmList from '@/components/FilmList';
 	import TvSeriesList from '@/components/TvSeriesList';
 
 	export default {
 		name: 'App',
 		components: {
+			Header,
 			Hero,
-			SearchMovie,
 			FilmList,
 			TvSeriesList,
 		},
