@@ -5,8 +5,17 @@
 
 		<!-- MAIN -->
 		<main>
-			<FilmList :filmList="filmsResult" :searchTrigger="searchTrigger" />
-			<TvSeriesList :seriesList="tvSeriesResult" :searchTrigger="searchTrigger" />
+			<section class="movie-details">
+				<h1>{{ this.clickedMovie.title }}</h1>
+				<p>various subtitle</p>
+				<p>
+					{{ this.clickedMovie.overview }}
+				</p>
+			</section>
+			<section class="search-result">
+				<FilmList :filmList="filmsResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
+				<TvSeriesList :seriesList="tvSeriesResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
+			</section>
 		</main>
 	</div>
 </template>
@@ -30,6 +39,7 @@
 				filmsResult: [],
 				tvSeriesResult: [],
 				searchTrigger: false,
+				clickedMovie: {},
 			};
 		},
 		methods: {
@@ -56,8 +66,34 @@
 				// se non ci sono risultati ma non ho ancora fatto una ricerca, non lascio nessun feedback
 				this.searchTrigger = true;
 			},
+
+			getInfo(obj) {
+				this.clickedMovie = obj;
+				console.log(this.clickedMovie);
+			},
 		},
 	};
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	#app {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+	}
+
+	main {
+		flex-grow: 1;
+		background-color: #841717;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 20px;
+	}
+</style>
