@@ -2,8 +2,16 @@
 	<section class="movie-details" v-if="movie.title || movie.name">
 		<div class="info">
 			<h1 class="movie-title">{{ movie.title ? movie.title : movie.name }}</h1>
-			<span class="release"> {{ movie.release_date ? movie.release_date : movie.first_air_date }}</span>
-			<span class="vote">{{ movie.vote_average }}</span>
+			<div class="sub">
+				<div class="release">
+					<span>Release date</span>
+					<span>{{ movie.release_date ? movie.release_date : movie.first_air_date }}</span>
+				</div>
+				<div class="vote">
+					<span>Vote avg</span>
+					<span>{{ movie.vote_average }}</span>
+				</div>
+			</div>
 			<p class="overview">
 				{{ movie.overview }}
 			</p>
@@ -54,11 +62,18 @@
 		}
 		.vote,
 		.release {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 			margin-right: 10px;
 			color: rgba(255, 255, 255, 0.5);
-			background-color: rgba(0, 0, 0, 0.5);
-			padding: 10px;
+			background-color: rgba(0, 0, 0, 0.2);
+			padding: 5px 10px;
 		}
+	}
+
+	.sub {
+		display: flex;
 	}
 
 	.bigBG {

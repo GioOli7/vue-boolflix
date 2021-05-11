@@ -94,11 +94,6 @@
 		padding: 20px;
 	}
 
-	.movie-details {
-		display: flex;
-		height: 500px;
-	}
-
 	.film-item {
 		min-width: 125px;
 		max-width: 125px;
