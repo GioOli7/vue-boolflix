@@ -25,6 +25,10 @@
 </script>
 
 <style scoped lang="scss">
+	.movie-details {
+		display: flex;
+		height: 500px;
+	}
 	.info {
 		z-index: 1;
 		position: relative;

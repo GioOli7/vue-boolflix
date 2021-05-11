@@ -17,7 +17,7 @@
 		<!-- else show text lang -->
 		<span v-else>Linga: {{ details.original_language }}</span>
 		<!-- vote -->
-		<span>Votazione:</span>
+		<!-- <span>Votazione:</span> -->
 		<div class="stars">
 			<i class="fas fa-star" v-for="(star, index) in Math.ceil(details.vote_average / 2)" :key="'c' + index"></i>
 			<i class="far fa-star" v-for="(star, index) in 5 - Math.ceil(details.vote_average / 2)" :key="'d' + index"></i>
@@ -44,13 +44,17 @@
 	}
 
 	.film-details {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
 		height: 100%;
 		padding: 4px;
 		color: white;
 		text-align: center;
-		background-color: rgba(0, 0, 0, 0.7);
+		background-color: rgba(0, 0, 0, 0.8);
 		opacity: 0;
 		transition: opacity 0.3s;
+		font-size: 12px;
 		&:hover {
 			opacity: 1;
 		}
