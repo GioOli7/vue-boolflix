@@ -6,10 +6,18 @@
 		<!-- MAIN -->
 		<main>
 			<section class="movie-details">
-				<h1>{{ this.clickedMovie.title }}</h1>
-				<p>various subtitle</p>
+				<h1>{{ this.clickedMovie.title ? this.clickedMovie.title : this.clickedMovie.name }}</h1>
+				<span
+					>Release date:
+					{{
+						this.clickedMovie.release_date
+							? this.clickedMovie.release_date.slice(0, 4)
+							: this.clickedMovie.first_air_date.slice(0, 4)
+					}}</span
+				>
+				<span>Average {{ this.clickedMovie.vote_average }}</span>
 				<p>
-					{{ this.clickedMovie.overview }}
+					{{ this.clickedMovie.overview != '' ? this.clickedMovie.overview : 'nessuna descrizione disponibile' }}
 				</p>
 			</section>
 			<section class="search-result">

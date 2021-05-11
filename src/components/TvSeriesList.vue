@@ -7,7 +7,7 @@
 				class="film-item"
 				v-for="(film, index) in seriesList"
 				:key="index"
-				v-on:click="$emit('getInfo', film.id)"
+				v-on:click="$emit('getInfo', film)"
 				:style="{
 					backgroundImage: `url(https://image.tmdb.org/t/p/w342${film.poster_path})`,
 				}"
