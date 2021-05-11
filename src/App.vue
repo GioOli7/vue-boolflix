@@ -5,28 +5,27 @@
 
 		<!-- MAIN -->
 		<main>
-			<section class="movie-details">
+			<section class="movie-details" v-if="clickedMovie.title || clickedMovie.name">
 				<div class="info">
-					<h1>{{ this.clickedMovie.title ? this.clickedMovie.title : this.clickedMovie.name }}</h1>
-					<span v-if="searchTrigger"
-						>Release date:
+					<h1 class="movie-title">{{ this.clickedMovie.title ? this.clickedMovie.title : this.clickedMovie.name }}</h1>
+					<span class="release">
 						{{
 							this.clickedMovie.release_date ? this.clickedMovie.release_date : this.clickedMovie.first_air_date
 						}}</span
 					>
-					<span v-if="searchTrigger">Average {{ this.clickedMovie.vote_average }}</span>
-					<p>
+					<span class="vote">{{ this.clickedMovie.vote_average }}</span>
+					<p class="overview">
 						{{ overview != '' ? this.clickedMovie.overview : 'nessuna descrizione' }}
 					</p>
 				</div>
 				<div
 					class="bigBG"
 					:style="{
-						backgroundImage: `linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgb(132, 23, 23) 80%), url(https://image.tmdb.org/t/p/w1280${this.clickedMovie.poster_path})`,
+						backgroundImage: `linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgb(132, 23, 23) 80%), url(https://image.tmdb.org/t/p/original${this.clickedMovie.poster_path})`,
 					}"
 				></div>
 			</section>
-			<section class="search-result">
+			<section class="search-result" v-if="searchTrigger">
 				<FilmList :filmList="filmsResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
 				<TvSeriesList :seriesList="tvSeriesResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
 			</section>
@@ -119,6 +118,30 @@
 
 	.info {
 		width: 40%;
+		padding-left: 40px;
+	}
+
+	.movie-title {
+		color: white;
+		font-size: 60px;
+		margin-bottom: 10px;
+	}
+	.overview,
+	.vote,
+	.release {
+		color: white;
+	}
+
+	.release,
+	.vote {
+		margin-right: 10px;
+		color: rgba(255, 255, 255, 0.5);
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 10px;
+	}
+
+	.overview {
+		margin-top: 40px;
 	}
 
 	.bigBG {
