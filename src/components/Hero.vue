@@ -1,11 +1,11 @@
 <template>
-	<div>
+	<section class="movie-details" v-if="movie.title || movie.name">
 		<div class="info">
 			<h1 class="movie-title">{{ movie.title ? movie.title : movie.name }}</h1>
 			<span class="release"> {{ movie.release_date ? movie.release_date : movie.first_air_date }}</span>
 			<span class="vote">{{ movie.vote_average }}</span>
 			<p class="overview">
-				{{ movie.overview != '' ? movie.overview : 'nessuna descrizione' }}
+				{{ movie.overview }}
 			</p>
 		</div>
 		<div
@@ -14,7 +14,7 @@
 				backgroundImage: `linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgb(132, 23, 23) 80%), url(https://image.tmdb.org/t/p/original${movie.poster_path})`,
 			}"
 		></div>
-	</div>
+	</section>
 </template>
 
 <script>

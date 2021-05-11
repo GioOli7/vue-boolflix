@@ -5,9 +5,7 @@
 
 		<!-- MAIN -->
 		<main>
-			<section class="movie-details" v-if="clickedMovie.title || clickedMovie.name">
-				<Hero :movie="clickedMovie" />
-			</section>
+			<Hero :movie="clickedMovie" />
 			<section class="search-result" v-if="searchTrigger">
 				<FilmList :filmList="filmsResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
 				<TvSeriesList :seriesList="tvSeriesResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
@@ -37,7 +35,7 @@
 				filmsResult: [],
 				tvSeriesResult: [],
 				searchTrigger: false,
-				clickedMovie: {},
+				clickedMovie: [],
 			};
 		},
 		methods: {
