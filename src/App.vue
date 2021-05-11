@@ -6,24 +6,7 @@
 		<!-- MAIN -->
 		<main>
 			<section class="movie-details" v-if="clickedMovie.title || clickedMovie.name">
-				<div class="info">
-					<h1 class="movie-title">{{ this.clickedMovie.title ? this.clickedMovie.title : this.clickedMovie.name }}</h1>
-					<span class="release">
-						{{
-							this.clickedMovie.release_date ? this.clickedMovie.release_date : this.clickedMovie.first_air_date
-						}}</span
-					>
-					<span class="vote">{{ this.clickedMovie.vote_average }}</span>
-					<p class="overview">
-						{{ overview != '' ? this.clickedMovie.overview : 'nessuna descrizione' }}
-					</p>
-				</div>
-				<div
-					class="bigBG"
-					:style="{
-						backgroundImage: `linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgb(132, 23, 23) 80%), url(https://image.tmdb.org/t/p/original${this.clickedMovie.poster_path})`,
-					}"
-				></div>
+				<Hero :movie="clickedMovie" />
 			</section>
 			<section class="search-result" v-if="searchTrigger">
 				<FilmList :filmList="filmsResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
@@ -35,6 +18,7 @@
 
 <script>
 	import axios from 'axios';
+	import Hero from '@/components/Hero';
 	import SearchMovie from '@/components/SearchMovie';
 	import FilmList from '@/components/FilmList';
 	import TvSeriesList from '@/components/TvSeriesList';
@@ -42,6 +26,7 @@
 	export default {
 		name: 'App',
 		components: {
+			Hero,
 			SearchMovie,
 			FilmList,
 			TvSeriesList,
@@ -114,43 +99,5 @@
 	.movie-details {
 		display: flex;
 		height: 500px;
-	}
-
-	.info {
-		width: 40%;
-		padding-left: 40px;
-	}
-
-	.movie-title {
-		color: white;
-		font-size: 60px;
-		margin-bottom: 10px;
-	}
-	.overview,
-	.vote,
-	.release {
-		color: white;
-	}
-
-	.release,
-	.vote {
-		margin-right: 10px;
-		color: rgba(255, 255, 255, 0.5);
-		background-color: rgba(0, 0, 0, 0.5);
-		padding: 10px;
-	}
-
-	.overview {
-		margin-top: 40px;
-	}
-
-	.bigBG {
-		height: 500px;
-		background-size: cover;
-		position: absolute;
-		right: 0px;
-		top: 0;
-		width: 60%;
-		background-position-y: 50%;
 	}
 </style>
