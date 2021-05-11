@@ -38,12 +38,8 @@
 		margin-bottom: 30px;
 	}
 
-	.film-item {
-		min-width: 125px;
-		max-width: 125px;
-		height: 180px;
-		margin-right: 5px;
-		background-size: cover;
-		background-position: center;
+	h2 {
+		color: white;
+		margin-bottom: 20px;
 	}
 </style>

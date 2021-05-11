@@ -5,7 +5,7 @@
 			<span class="release"> {{ movie.release_date ? movie.release_date : movie.first_air_date }}</span>
 			<span class="vote">{{ movie.vote_average }}</span>
 			<p class="overview">
-				{{ overview != '' ? movie.overview : 'nessuna descrizione' }}
+				{{ movie.overview != '' ? movie.overview : 'nessuna descrizione' }}
 			</p>
 		</div>
 		<div
@@ -24,33 +24,26 @@
 	};
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 	.info {
 		width: 40%;
 		padding-left: 40px;
-	}
-
-	.movie-title {
-		color: white;
-		font-size: 60px;
-		margin-bottom: 10px;
-	}
-	.overview,
-	.vote,
-	.release {
-		color: white;
-	}
-
-	.release,
-	.vote {
-		margin-right: 10px;
-		color: rgba(255, 255, 255, 0.5);
-		background-color: rgba(0, 0, 0, 0.5);
-		padding: 10px;
-	}
-
-	.overview {
-		margin-top: 40px;
+		.movie-title {
+			color: white;
+			font-size: 60px;
+			margin-bottom: 10px;
+		}
+		.overview {
+			margin-top: 40px;
+			color: white;
+		}
+		.vote,
+		.release {
+			margin-right: 10px;
+			color: rgba(255, 255, 255, 0.5);
+			background-color: rgba(0, 0, 0, 0.5);
+			padding: 10px;
+		}
 	}
 
 	.bigBG {

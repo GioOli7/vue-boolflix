@@ -67,7 +67,7 @@
 
 			getInfo(obj) {
 				this.clickedMovie = obj;
-				console.log(this.clickedMovie);
+				// console.log(this.clickedMovie);
 			},
 		},
 	};
@@ -99,5 +99,14 @@
 	.movie-details {
 		display: flex;
 		height: 500px;
+	}
+
+	.film-item {
+		min-width: 125px;
+		max-width: 125px;
+		height: 180px;
+		margin-right: 5px;
+		background-size: cover;
+		background-position: center;
 	}
 </style>
