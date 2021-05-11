@@ -2,7 +2,14 @@
 	<section class="tvseries-results">
 		<h2>Serie TV</h2>
 		<div class="tvseries-list">
-			<div class="film-item" v-for="(film, index) in seriesList" :key="index">
+			<div
+				class="film-item"
+				v-for="(film, index) in seriesList"
+				:key="index"
+				:style="{
+					backgroundImage: `url(https://image.tmdb.org/t/p/w342${film.poster_path})`,
+				}"
+			>
 				<FilmItem :details="film" />
 			</div>
 		</div>
@@ -29,7 +36,10 @@
 	}
 
 	.film-item {
-		min-width: calc(100% / 6);
-		height: 410px;
+		min-width: 200px;
+		max-width: 200px;
+		height: 300px;
+		background-size: cover;
+		background-position: center;
 	}
 </style>

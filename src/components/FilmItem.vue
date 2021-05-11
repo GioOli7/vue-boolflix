@@ -1,10 +1,5 @@
 <template>
-	<div
-		class="film-details"
-		:style="{
-			backgroundImage: `url(https://image.tmdb.org/t/p/w342${details.poster_path})`,
-		}"
-	>
+	<div class="film-details">
 		<!-- title -->
 		<h3 class="title">{{ details.title ? details.title : details.name }}</h3>
 		<!-- original title -->
@@ -19,8 +14,8 @@
 		<h5 v-else>{{ details.original_language }}</h5>
 		<!-- vote -->
 		<div class="stars">
-			<i class="fas fa-star" v-for="(star, index) in vote_average" :key="'a' + index"></i>
-			<i class="far fa-star" v-for="(star, index) in empty_stars" :key="'b' + index"></i>
+			<i class="fas fa-star" v-for="(star, index) in Math.ceil(details.vote_average / 2)" :key="'c' + index"></i>
+			<i class="far fa-star" v-for="(star, index) in 5 - Math.ceil(details.vote_average / 2)" :key="'d' + index"></i>
 		</div>
 	</div>
 </template>
@@ -32,19 +27,9 @@
 		data() {
 			return {
 				languages: ['en', 'it'],
-				vote_average: 0,
-				empty_stars: 0,
 			};
 		},
-		created() {
-			this.voteStars();
-		},
-		methods: {
-			voteStars() {
-				this.vote_average = Math.ceil(this.details.vote_average / 2);
-				this.empty_stars = 5 - this.vote_average;
-			},
-		},
+		methods: {},
 	};
 </script>
 
@@ -54,9 +39,7 @@
 	}
 
 	.film-details {
-		background-size: cover;
-		width: 100%;
-		height: 100%;
+		//
 	}
 
 	.stars {
