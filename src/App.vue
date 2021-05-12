@@ -8,16 +8,10 @@
 			<Hero :movie="clickedMovie" />
 
 			<!-- search result list -->
-			<section class="search-result" v-if="searchTrigger">
-				<div v-for="(list, index) in searchResults" :key="'a' + index">
-					<FilmList :mainTitleList="list.title" :filmList="list.movieList" :searchTrigger="searchTrigger" @getInfo="getInfo" />
-				</div>
-			</section>
+			<SearchResult :searchTrigger="searchTrigger" :searchResults="searchResults" @getInfo="getInfo" />
 
 			<!-- Movie list on page load -->
-			<section class="home-screen" v-show="homeLoaded" v-for="(list, index) in home" :key="'b' + index">
-				<FilmList :mainTitleList="list.title" :filmList="list.movieList" @getInfo="getInfo" />
-			</section>
+			<TopFilmList :homeLoaded="homeLoaded" :home="home" @getInfo="getInfo" />
 
 			<LoadingScreen v-show="!homeLoaded" />
 		</main>
@@ -28,7 +22,8 @@
 	import axios from 'axios';
 	import Header from '@/components/Header';
 	import Hero from '@/components/Hero';
-	import FilmList from '@/components/FilmList';
+	import SearchResult from '@/components/SearchResult';
+	import TopFilmList from '@/components/TopFilmList';
 	import LoadingScreen from '@/components/LoadingScreen';
 
 	export default {
@@ -36,7 +31,8 @@
 		components: {
 			Header,
 			Hero,
-			FilmList,
+			SearchResult,
+			TopFilmList,
 			LoadingScreen,
 		},
 		created() {
