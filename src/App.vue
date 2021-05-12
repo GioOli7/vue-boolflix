@@ -3,6 +3,7 @@
 		<!-- HEADER -->
 		<Header @getFilm="getFilm" />
 
+		<!-- TODO ottimizzare questa sezione -->
 		<!-- MAIN -->
 		<main>
 			<Hero :movie="clickedMovie" />
@@ -17,7 +18,7 @@
 				<FilmList :filmList="tvSeriesResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
 			</section>
 
-			<section class="home-screen">
+			<section class="home-screen" v-show="homeLoaded">
 				<h2 class="list-type">Films - Popular now</h2>
 				<FilmList :filmList="popularFilms" @getInfo="getInfo" />
 
@@ -27,6 +28,8 @@
 				<h2 class="list-type">TV Series - Popular now</h2>
 				<FilmList :filmList="popularTVSeries" @getInfo="getInfo" />
 			</section>
+
+			<LoadingScreen v-show="!homeLoaded" />
 		</main>
 	</div>
 </template>
@@ -36,6 +39,7 @@
 	import Header from '@/components/Header';
 	import Hero from '@/components/Hero';
 	import FilmList from '@/components/FilmList';
+	import LoadingScreen from '@/components/LoadingScreen';
 
 	export default {
 		name: 'App',
@@ -43,6 +47,7 @@
 			Header,
 			Hero,
 			FilmList,
+			LoadingScreen,
 		},
 		created() {
 			//
@@ -51,13 +56,14 @@
 		data() {
 			return {
 				apikey: '2b4a7028c4a25940b0c093d536ca98c6',
-				popularFilms: [],
-				UpcomingFilms: [],
-				popularTVSeries: [],
-				filmsResult: [],
-				tvSeriesResult: [],
+				popularFilms: [], // list of popular movies
+				UpcomingFilms: [], // upcoming movies
+				popularTVSeries: [], // popular TV series
+				filmsResult: [], // film list from search
+				tvSeriesResult: [], // tvSeries list from search
 				searchTrigger: false,
-				clickedMovie: [],
+				homeLoaded: false,
+				clickedMovie: [], // clicked film's data
 			};
 		},
 		methods: {
@@ -77,6 +83,10 @@
 					.get(`https://api.themoviedb.org/3/tv/popular?api_key=${this.apikey}&language=it-IT&page=1`)
 					.then(result => (this.popularTVSeries = result.data.results))
 					.catch(error => console.log('error', error));
+				console.log(this.homeLoaded);
+				setTimeout(() => {
+					this.homeLoaded = true;
+				}, 1000);
 			},
 
 			getFilm(query) {

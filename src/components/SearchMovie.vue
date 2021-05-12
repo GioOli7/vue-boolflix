@@ -1,6 +1,12 @@
 <template>
 	<header>
-		<input type="text" v-model="query" v-on:keyup.enter="$emit('getFilm', query)" placeholder="Cerca un film" />
+		<input
+			type="text"
+			v-model="query"
+			v-on:click="query = ''"
+			v-on:keyup.enter="$emit('getFilm', query)"
+			placeholder="Cerca un film"
+		/>
 	</header>
 </template>
 
