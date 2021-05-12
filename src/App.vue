@@ -10,15 +10,13 @@
 			<!-- search result list -->
 			<section class="search-result" v-if="searchTrigger">
 				<div v-for="(list, index) in searchResults" :key="'a' + index">
-					<h2 class="list-type">{{ list.title }}</h2>
-					<FilmList :filmList="list.movieList" :searchTrigger="searchTrigger" @getInfo="getInfo" />
+					<FilmList :mainTitleList="list.title" :filmList="list.movieList" :searchTrigger="searchTrigger" @getInfo="getInfo" />
 				</div>
 			</section>
 
 			<!-- Movie list on page load -->
 			<section class="home-screen" v-show="homeLoaded" v-for="(list, index) in home" :key="'b' + index">
-				<h2 class="list-type">{{ list.title }}</h2>
-				<FilmList :filmList="list.movieList" @getInfo="getInfo" />
+				<FilmList :mainTitleList="list.title" :filmList="list.movieList" @getInfo="getInfo" />
 			</section>
 
 			<LoadingScreen v-show="!homeLoaded" />
@@ -128,10 +126,5 @@
 		flex-direction: column;
 		justify-content: space-between;
 		padding: 20px;
-	}
-
-	.list-type {
-		color: white;
-		margin-bottom: 20px;
 	}
 </style>
