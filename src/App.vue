@@ -99,6 +99,7 @@
 
 			getInfo(obj) {
 				this.clickedMovie = obj;
+				window.scrollTo(0, 0);
 			},
 		},
 	};
@@ -110,6 +111,7 @@
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
+		scroll-behavior: smooth;
 	}
 
 	#app {
