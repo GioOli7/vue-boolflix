@@ -60,23 +60,17 @@
 				// Popular films
 				axios
 					.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apikey}&language=it-IT&page=1`)
-					.then(result => {
-						this.home.push({ title: 'Film - popular', movieList: result.data.results });
-					})
+					.then(result => this.home.push({ title: 'Film - popular', movieList: result.data.results }))
 					.catch(error => console.log('error', error));
 				// Upcoming films
 				axios
 					.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apikey}&language=it-IT&page=1`)
-					.then(result => {
-						this.home.push({ title: 'Film - upcoming', movieList: result.data.results });
-					})
+					.then(result => this.home.push({ title: 'Film - upcoming', movieList: result.data.results }))
 					.catch(error => console.log('error', error));
 				// Popular TVseries
 				axios
 					.get(`https://api.themoviedb.org/3/tv/popular?api_key=${this.apikey}&language=it-IT&page=1`)
-					.then(result => {
-						this.home.push({ title: 'Serie TV - popular', movieList: result.data.results });
-					})
+					.then(result => this.home.push({ title: 'Serie TV - popular', movieList: result.data.results }))
 					.catch(error => console.log('error', error));
 				setTimeout(() => {
 					this.homeLoaded = true;
@@ -91,20 +85,14 @@
 					.join('%20');
 				// Film Api request
 				axios
-					.get(
-						`https://api.themoviedb.org/3/search/movie?api_key=${this.apikey}&language=it-IT&query=${formatQuery}&page=1&include_adult=false`
-					)
-					.then(result => {
-						this.searchResults.push({ title: 'Film', movieList: result.data.results });
-					})
+					.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apikey}&language=it-IT&query=${formatQuery}&page=1&include_adult=false`)
+					.then(result => this.searchResults.push({ title: 'Film', movieList: result.data.results }))
 					.catch(error => console.log('error', error));
 
 				// Serie TV Api request
 				axios
 					.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apikey}&language=it-IT&query=${formatQuery}`)
-					.then(result => {
-						this.searchResults.push({ title: 'Serie TV', movieList: result.data.results });
-					})
+					.then(result => this.searchResults.push({ title: 'Serie TV', movieList: result.data.results }))
 					.catch(error => console.log('error', error));
 				// se non ci sono risultati ma non ho ancora fatto una ricerca, non lascio nessun feedback
 				this.searchTrigger = true;

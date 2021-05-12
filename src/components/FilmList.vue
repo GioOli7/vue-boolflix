@@ -6,9 +6,7 @@
 			v-for="(film, index) in filmList"
 			:key="index"
 			v-on:click="$emit('getInfo', film)"
-			:style="{
-				backgroundImage: `url(${film.poster_path === null ? placeholder : baseIMGurl + film.poster_path})`,
-			}"
+			:style="{ backgroundImage: `url(${film.poster_path === null ? placeholder : baseIMGurl + film.poster_path})` }"
 		>
 			<FilmItem :details="film" />
 		</div>
@@ -25,7 +23,6 @@
 		},
 		data() {
 			return {
-				// placeholder:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBWlxl9mUhAA-MBkFLLB9CmYjxllUveAXyWA&usqp=CAU',
 				placeholder: require('@/assets/poster_placeholder.png'),
 				baseIMGurl: 'https://image.tmdb.org/t/p/w342',
 			};

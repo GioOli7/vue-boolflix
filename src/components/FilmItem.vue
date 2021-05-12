@@ -3,10 +3,7 @@
 		<!-- title -->
 		<span class="title">Titolo: {{ details.title ? details.title : details.name }}</span>
 		<!-- original title -->
-		<span
-			class="original-title"
-			v-show="details.original_title != details.title || details.original_name != details.name"
-		>
+		<span class="original-title" v-show="details.original_title != details.title || details.original_name != details.name">
 			Original title: {{ details.original_title ? details.original_title : details.original_name }}
 		</span>
 		<!-- if lang == it or en > show flags -->
