@@ -8,7 +8,7 @@
 			<Hero :movie="clickedMovie" />
 			<section class="search-result" v-if="searchTrigger">
 				<FilmList :filmList="filmsResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
-				<TvSeriesList :seriesList="tvSeriesResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
+				<FilmList :filmList="tvSeriesResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
 			</section>
 		</main>
 	</div>
@@ -19,7 +19,6 @@
 	import Header from '@/components/Header';
 	import Hero from '@/components/Hero';
 	import FilmList from '@/components/FilmList';
-	import TvSeriesList from '@/components/TvSeriesList';
 
 	export default {
 		name: 'App',
@@ -27,7 +26,6 @@
 			Header,
 			Hero,
 			FilmList,
-			TvSeriesList,
 		},
 		data() {
 			return {
