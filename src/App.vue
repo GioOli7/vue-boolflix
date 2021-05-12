@@ -6,9 +6,26 @@
 		<!-- MAIN -->
 		<main>
 			<Hero :movie="clickedMovie" />
+
 			<section class="search-result" v-if="searchTrigger">
+				<!-- film list -->
+				<h2 class="list-type">Film</h2>
 				<FilmList :filmList="filmsResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
+
+				<!-- SerieTV list -->
+				<h2 class="list-type">Serie tv</h2>
 				<FilmList :filmList="tvSeriesResult" :searchTrigger="searchTrigger" @getInfo="getInfo" />
+			</section>
+
+			<section class="home-screen">
+				<h2 class="list-type">Films - Popular now</h2>
+				<FilmList :filmList="popularFilms" @getInfo="getInfo" />
+
+				<h2 class="list-type">Films - Upcoming</h2>
+				<FilmList :filmList="UpcomingFilms" @getInfo="getInfo" />
+
+				<h2 class="list-type">TV Series - Popular now</h2>
+				<FilmList :filmList="popularTVSeries" @getInfo="getInfo" />
 			</section>
 		</main>
 	</div>
@@ -27,9 +44,16 @@
 			Hero,
 			FilmList,
 		},
+		created() {
+			//
+			this.getHomeData();
+		},
 		data() {
 			return {
 				apikey: '2b4a7028c4a25940b0c093d536ca98c6',
+				popularFilms: [],
+				UpcomingFilms: [],
+				popularTVSeries: [],
 				filmsResult: [],
 				tvSeriesResult: [],
 				searchTrigger: false,
@@ -37,6 +61,24 @@
 			};
 		},
 		methods: {
+			getHomeData() {
+				// Popular films
+				axios
+					.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apikey}&language=it-IT&page=1`)
+					.then(result => (this.popularFilms = result.data.results))
+					.catch(error => console.log('error', error));
+				// Upcoming films
+				axios
+					.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apikey}&language=it-IT&page=1`)
+					.then(result => (this.UpcomingFilms = result.data.results))
+					.catch(error => console.log('error', error));
+				// Popular TVseries
+				axios
+					.get(`https://api.themoviedb.org/3/tv/popular?api_key=${this.apikey}&language=it-IT&page=1`)
+					.then(result => (this.popularTVSeries = result.data.results))
+					.catch(error => console.log('error', error));
+			},
+
 			getFilm(query) {
 				this.filmsResult = [];
 				this.tvSeriesResult = [];
@@ -93,13 +135,8 @@
 		padding: 20px;
 	}
 
-	.film-item {
-		min-width: 125px;
-		max-width: 125px;
-		height: 180px;
-		margin-right: 5px;
-		background-size: cover;
-		background-position: center;
-		cursor: pointer;
+	.list-type {
+		color: white;
+		margin-bottom: 20px;
 	}
 </style>
