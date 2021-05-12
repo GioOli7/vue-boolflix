@@ -3,7 +3,6 @@
 		<!-- HEADER -->
 		<Header @getFilm="getFilm" />
 
-		<!-- TODO ottimizzare questa sezione -->
 		<!-- MAIN -->
 		<main>
 			<Hero :movie="clickedMovie" />

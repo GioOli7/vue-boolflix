@@ -31,13 +31,24 @@
 	};
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 	.film-list {
 		display: flex;
 		overflow-y: hidden;
 		scrollbar-width: thin;
 		height: 190px;
 		margin-bottom: 30px;
+		// CHROME scrollbar style
+		&::-webkit-scrollbar {
+			background: rgba(0, 0, 0, 0.3);
+			height: 8px;
+		}
+		&::-webkit-scrollbar-thumb {
+			background: rgba(255, 255, 255, 0.3);
+		}
+		&::-webkit-scrollbar-thumb:hover {
+			background: rgba(255, 255, 255, 0.5);
+		}
 	}
 
 	.film-item {
