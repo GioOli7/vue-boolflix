@@ -1,17 +1,33 @@
 <template>
 	<section class="movie-details" v-if="movie.title || movie.name">
 		<div class="info">
+			<!-- titolo film -->
 			<h1 class="movie-title">{{ movie.title ? movie.title : movie.name }}</h1>
+
+			<!-- subtitle con informazioni -->
 			<div class="sub">
+				<!-- release yer -->
 				<div class="release">
-					<span>Release date</span>
-					<span>{{ movie.release_date ? movie.release_date : movie.first_air_date }}</span>
+					<span>Release Year</span>
+					<!-- conditional necessario per evitare errori in console quando release date è null -->
+					<span>{{
+						movie.release_date
+							? movie.release_date
+								? movie.release_date.slice(0, 4)
+								: movie.release_date
+							: movie.first_air_date
+							? movie.first_air_date.slice(0, 4)
+							: movie.first_air_date
+					}}</span>
 				</div>
+				<!-- average rating -->
 				<div class="vote">
-					<span>Vote avg</span>
+					<span>Rating avg</span>
 					<span>{{ movie.vote_average }}</span>
 				</div>
 			</div>
+
+			<!-- overview -->
 			<p class="overview">
 				{{ movie.overview }}
 			</p>
