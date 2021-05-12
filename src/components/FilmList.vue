@@ -7,7 +7,7 @@
 			:key="index"
 			v-on:click="$emit('getInfo', film)"
 			:style="{
-				backgroundImage: `url(https://image.tmdb.org/t/p/w342${film.poster_path})`,
+				backgroundImage: `url(${film.poster_path === null ? placeholder : baseIMGurl + film.poster_path})`,
 			}"
 		>
 			<FilmItem :details="film" />
@@ -23,6 +23,14 @@
 		components: {
 			FilmItem,
 		},
+		data() {
+			return {
+				// placeholder:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBWlxl9mUhAA-MBkFLLB9CmYjxllUveAXyWA&usqp=CAU',
+				placeholder: require('@/assets/poster_placeholder.png'),
+				baseIMGurl: 'https://image.tmdb.org/t/p/w342',
+			};
+		},
+		methods: {},
 	};
 </script>
 

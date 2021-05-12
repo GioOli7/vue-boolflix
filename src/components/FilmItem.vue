@@ -34,7 +34,6 @@
 				languages: ['en', 'it'],
 			};
 		},
-		methods: {},
 	};
 </script>
 
