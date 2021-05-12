@@ -15,7 +15,7 @@
 			<img :src="require(`@/images/${details.original_language}.png`)" :alt="details.title" />
 		</div>
 		<!-- else show text lang -->
-		<span v-else>Linga: {{ details.original_language }}</span>
+		<span v-else>Lingua: {{ details.original_language }}</span>
 		<!-- vote -->
 		<!-- <span>Votazione:</span> -->
 		<div class="stars">

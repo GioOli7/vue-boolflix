@@ -72,6 +72,7 @@
 </script>
 
 <style lang="scss">
+	@import '@/data/vars';
 	* {
 		margin: 0;
 		padding: 0;
@@ -87,7 +88,7 @@
 	main {
 		position: relative;
 		flex-grow: 1;
-		background-color: #841717;
+		background-color: $primary-color;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -101,5 +102,6 @@
 		margin-right: 5px;
 		background-size: cover;
 		background-position: center;
+		cursor: pointer;
 	}
 </style>
